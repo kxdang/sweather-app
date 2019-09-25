@@ -1,12 +1,13 @@
 const request = require("request");
 const config = require("./config");
 
-const mapAPI = config.mapAPI;
+const mapAPI = config.mapAPI; //local use only
+const mapBoxAPI = process.env.mapboxapi;
 
 const geocode = (address, callback) => {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
     address
-  )}.json?access_token=${mapAPI}&limit=1`;
+  )}.json?access_token=${mapBoxAPI}&limit=1`;
 
   request({ url, json: true }, (error, { body }) => {
     if (error) {
