@@ -1,7 +1,7 @@
 const request = require("request");
 const config = require("./config");
 
-const key = config.configAPI;
+const key = config.configAPI; // for local development only
 const darkskyapi = process.env.darkskyapi;
 
 const forecast = (lat, long, callback) => {
