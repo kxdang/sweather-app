@@ -17,7 +17,12 @@ const forecast = (lat, long, callback) => {
       const feelsLikeTemperature = Math.round(currently.apparentTemperature);
       callback(
         undefined,
-        `${body.daily.data[0].summary} It is currently ${currentTemperature} degrees outside and it feels like ${feelsLikeTemperature} outside. There is a ${currently.precipProbability}% chance of rain`
+        {
+          currentTemp: currentTemperature,
+          feelsLike: feelsLikeTemperature,
+          summary: body.daily.data[0].summary
+        }
+        // `${body.daily.data[0].summary} It is currently ${currentTemperature} degrees outside and it feels like ${feelsLikeTemperature} outside. There is a ${currently.precipProbability}% chance of rain`
       );
     }
   });

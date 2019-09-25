@@ -16,7 +16,8 @@ weatherForm.addEventListener("submit", e => {
         messageOne.textContent = data.error;
       } else {
         messageOne.textContent = data.location;
-        messageTwo.textContent = data.forecast;
+        messageTwo.textContent = `${data.forecast.summary} The current temperature is ${data.forecast.currentTemp} degrees and it feels like ${data.forecast.feelsLike} degrees`;
+        console.log(data.forecast.currentTemp);
       }
     });
   });

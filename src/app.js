@@ -57,13 +57,21 @@ app.get("/weather", (req, res) => {
         return res.send({ error });
       }
 
-      forecast(latitude, longitude, (error, forecastData) => {
-        res.send({
-          forecast: forecastData,
-          location,
-          address: req.query.address
-        });
-      });
+      forecast(
+        latitude,
+        longitude,
+        (error, { currentTemp, feelsLike, summary }) => {
+          res.send({
+            forecast: {
+              currentTemp: currentTemp,
+              feelsLike: feelsLike,
+              summary: summary
+            },
+            location,
+            address: req.query.address
+          });
+        }
+      );
     }
   );
 });
