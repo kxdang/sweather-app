@@ -13,9 +13,11 @@ const forecast = (lat, long, callback) => {
       callback("Unable to find location", undefined);
     } else {
       const currently = body.currently;
+      const currentTemperature = Math.round(currently.temperature);
+      const feelsLikeTemperature = Math.round(currently.apparentTemperature);
       callback(
         undefined,
-        `${body.daily.data[0].summary} It is currently ${currently.temperature} degrees outside. There is a ${currently.precipProbability}% chance of rain`
+        `${body.daily.data[0].summary} It is currently ${currentTemperature} degrees outside and it feels like ${feelsLikeTemperature} outside. There is a ${currently.precipProbability}% chance of rain`
       );
     }
   });
